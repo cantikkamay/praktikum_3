@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Halaman Beranda</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Cantikka May Aristianti">
+  <meta name="nim" content="234311010">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      background-color: #666;
+      padding: 30px;
+      text-align: center;
+      font-size: 35px;
+      color: white;
+    }
+
+    nav {
+      float: left;
+      width: 30%;
+      height: auto;
+      background: #ccc;
+      padding: 20px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    article {
+      float: left;
+      padding: 20px;
+      width: 70%;
+      background-color: #f1f1f1;
+      height: auto;
+    }
+
+    section::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    footer {
+      background-color: #777;
+      padding: 10px;
+      text-align: center;
+      color: white;
+    }
+
+    /* Menambahkan CSS untuk mengatur ukuran gambar */
+    .gambar-list {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .gambar-list li {
+      margin: 10px;
+    }
+
+    .gambar-list li img {
+      width: 150px;
+      height: 150px;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      nav,
+      article {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2>Halaman Beranda</h2>
+  </header>
+
+  <section>
+    <nav>
+      <ul>
+        <li><a href="#" onclick="showContent('home')">Home</a></li>
+        <li><a href="#" onclick="showContent('gambar')">Gambar</a></li>
+        <li><a href="#" onclick="showContent('event')">Event</a></li>
+        <li><a href="#" onclick="showContent('audio')">Audio</a></li>
+        <li><a href="#" onclick="showContent('vidio')">Vidio</a></li>
+        <li><a href="#" onclick="showContent('svg')">SVG</a></li>
+        <li><a href="#" onclick="showContent('canvas')">Canvas</a></li>
+      </ul>
+    </nav>
+
+    <article>
+      <div id="home" class="content">
+        <h1>Halaman Index</h1>
+        <p> setiap opsi navigasi (misalnya, "Gambar") memiliki atribut onclick yang memanggil fungsi showContent 
+            dengan argumen yang sesuai (misalnya, "gambar"). Fungsi ini kemudian menampilkan konten yang sesuai 
+            dengan ID yang dipilih sambil menyembunyikan konten lainnya.</p>
+      </div>
+
+      <div id="gambar" class="content" style="display: none;">
+        <h2>Daftar Gambar</h2>
+        <ul class="gambar-list">
+          <li><a href="gambar.jpg"><img src="gambar.jpg" alt="Gambar 1"></a></li>
+          <li><a href="gambar1.jpg"><img src="gambar1.jpg" alt="Gambar 2"></a></li>
+          <li><a href="gambar2.jpg"><img src="gambar2.jpg" alt="Gambar 3"></a></li>
+          <li><a href="gambar4.jpg"><img src="gambar4.jpg" alt="Gambar 4"></a></li>
+          <li><a href="gambar5.jpg"><img src="gambar5.jpg" alt="Gambar 5"></a></li>
+          <li><a href="gambar6.jpg"><img src="gambar6.jpg" alt="Gambar 6"></a></li>
+        </ul>
+      </div>
+    </article>
+    <div style="clear:both;"></div>
+    <!-- Menambahkan elemen div untuk membersihkan floating -->
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Cantikka May Aristianti</p>
+    <p>Hak cipta dilindungi undang-undang.</p>
+  </footer>
+
+  <script>
+    function showContent(contentId) {
+      var contents = document.getElementsByClassName('content');
+      for (var i = 0; i < contents.length; i++) {
+        contents[i].style.display = 'none';
+      }
+      document.getElementById(contentId).style.display = 'block';
+    }
+  </script>
+</body>
+
+</html>
