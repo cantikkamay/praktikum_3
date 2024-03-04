@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Pendaftaran</title>
+  <link rel="icon" type="img/png" href="gambar/icon.png" sizes="16x16" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href="main.css">
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      display: flex; /* Mengubah grid menjadi flex */
+      flex-direction: column; /* Mengatur arah menjadi vertikal */
+      align-items: stretch; /* Pusatkan item secara horizontal */
+      gap: 20px;
+      width: 80%;
+      max-width: 600px;
+    }
+    .box {
+      display: flex; /* Mengubah grid menjadi flex */
+      flex-direction: column; /* Mengatur arah menjadi vertikal */
+      align-items: stretch; /* Pusatkan item secara horizontal */
+      gap: 20px;
+      width: 100%; /* Menjadikan kotak lebar penuh */
+      height: 100%; /* Menjadikan tinggi sama */
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type="text"], input[type="tel"], input[type="email"], input[type="date"], input[type="time"], select {
+      width: calc(100% - 20px);
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .form-title {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    .buttons {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+    }
+    fieldset {
+      width: 100%; /* Mengatur lebar fieldset */
+      margin: 0 auto; /* Posisi tengah */
+    }
+    legend {
+      font-size: 1.2em; /* Ukuran huruf legenda */
+      margin-bottom: 5px; /* Mengurangi jarak bawah */
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      width: auto; /* Lebar tombol mengikuti konten */
+      margin: 0 10px; /* Jarak antara tombol */
+      padding: 10px 20px; /* Padding tombol */
+      cursor: pointer; /* Mengubah cursor menjadi tangan saat dihover */
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="form-title">Form Penjadwal Pertemuan</h1>
+    <form id="meetingForm" action="proses_form.php" method="post">
+      <div class="box">
+        <fieldset>
+          <legend>Informasi Pribadi</legend>
+          <div class="form-group">
+            <label for="nama">Nama</label>
+            <input type="text" id="nama" name="nama" required>
+          </div>
+          <div class="form-group">
+            <label for="telp">No. Telepon</label>
+            <input type="tel" id="telp" name="telp" pattern="[0-9]{4}-[0-9]{6}" placeholder="Contoh: 0812-345678" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Alamat Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="tanggal">Tanggal Lahir</label>
+            <input type="date" id="tanggal" name="tanggal" min="1987-01-01" max="1993-01-01" required>
+          </div>
+        </fieldset>
+      </div>
+      <div class="box">
+        <fieldset>
+          <legend>Permintaan Pertemuan</legend>
+          <div class="form-group">
+            <label for="tujuan">Tujuan Pertemuan</label>
+            <input type="text" id="tujuan" name="tujuan" required>
+          </div>
+          <div class="form-group">
+            <label for="vol">Tingkat Kepentingan Pertemuan</label>
+            <input type="range" id="vol" name="vol" min="0" max="10" required>
+          </div>
+          <div class="form-group">
+            <label for="tanggal_pertemuan">Tanggal</label>
+            <input type="date" id="tanggal_pertemuan" name="tanggal_pertemuan" required>
+          </div>
+          <div class="form-group">
+            <label for="waktu_pertemuan">Waktu</label>
+            <input type="time" id="waktu_pertemuan" name="waktu_pertemuan" required>
+          </div>
+        </fieldset>
+      </div>
+      <div class="buttons">
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Validasi tanggal di atas hari ini
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById('tanggal_pertemuan').setAttribute('min', today);
+
+    // Validasi waktu antara 17.00 sampai 21.00 WIB
+    document.getElementById('waktu_pertemuan').addEventListener('input', function() {
+      var selectedTime = this.value;
+      var selectedHour = parseInt(selectedTime.split(':')[0]);
+      var selectedMinute = parseInt(selectedTime.split(':')[1]);
+      if ((selectedHour < 17 || selectedHour > 21) || (selectedHour === 21 && selectedMinute > 0)) {
+        alert('Waktu pertemuan harus antara 17.00 sampai dengan 21.00 WIB.');
+        this.value = ''; // Reset nilai input
+      }
+    });
+  </script>
+</body>
+</html>
