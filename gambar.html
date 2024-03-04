@@ -4,6 +4,7 @@
 <head>
   <title>Halaman Beranda</title>
   <meta charset="utf-8">
+  <link rel="icon" type="img/png" href="gambar/icon.png" sizes="16x16" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Cantikka May Aristianti">
   <meta name="nim" content="234311010">
@@ -96,54 +97,36 @@
   <section>
     <nav>
       <ul>
-        <li><a href="#" onclick="showContent('home')">Home</a></li>
-        <li><a href="#" onclick="showContent('gambar')">Gambar</a></li>
-        <li><a href="#" onclick="showContent('event')">Event</a></li>
-        <li><a href="#" onclick="showContent('audio')">Audio</a></li>
-        <li><a href="#" onclick="showContent('vidio')">Vidio</a></li>
-        <li><a href="#" onclick="showContent('svg')">SVG</a></li>
-        <li><a href="#" onclick="showContent('canvas')">Canvas</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gambar.html">Gambar</a></li>
+        <li><a href="event.html">Event</a></li>
+        <li><a href="audio.html">Audio</a></li>
+        <li><a href="vidio.html">Vidio</a></li>
+        <li><a href="svg.html">SVG</a></li>
+        <li><a href="canvas.html">Canvas</a></li>
       </ul>
     </nav>
 
     <article>
-      <div id="home" class="content">
-        <h1>Halaman Index</h1>
+        <h2>Daftar Gambar</h2>
+        <ul class="gambar-list">
+          <li><a href="gambar/gambar.jpg"><img src="gambar/gambar.jpg" alt="Gambar 1"></a></li>
+          <li><a href="gambar/gambar1.jpg"><img src="gambar/gambar1.jpg" alt="Gambar 2"></a></li>
+          <li><a href="gambar/gambar2.jpg"><img src="gambar/gambar2.jpg" alt="Gambar 3"></a></li>
+          <li><a href="gambar/gambar4.jpg"><img src="gambar/gambar4.jpg" alt="Gambar 4"></a></li>
+          <li><a href="gambar/gambar5.jpg"><img src="gambar/gambar5.jpg" alt="Gambar 5"></a></li>
+          <li><a href="gambar/gambar6.jpg"><img src="gambar/gambar6.jpg" alt="Gambar 6"></a></li>
         <p> setiap opsi navigasi (misalnya, "Gambar") memiliki atribut onclick yang memanggil fungsi showContent 
             dengan argumen yang sesuai (misalnya, "gambar"). Fungsi ini kemudian menampilkan konten yang sesuai 
             dengan ID yang dipilih sambil menyembunyikan konten lainnya.</p>
-      </div>
-
-      <div id="gambar" class="content" style="display: none;">
-        <h2>Daftar Gambar</h2>
-        <ul class="gambar-list">
-          <li><a href="gambar.jpg"><img src="gambar.jpg" alt="Gambar 1"></a></li>
-          <li><a href="gambar1.jpg"><img src="gambar1.jpg" alt="Gambar 2"></a></li>
-          <li><a href="gambar2.jpg"><img src="gambar2.jpg" alt="Gambar 3"></a></li>
-          <li><a href="gambar4.jpg"><img src="gambar4.jpg" alt="Gambar 4"></a></li>
-          <li><a href="gambar5.jpg"><img src="gambar5.jpg" alt="Gambar 5"></a></li>
-          <li><a href="gambar6.jpg"><img src="gambar6.jpg" alt="Gambar 6"></a></li>
         </ul>
       </div>
     </article>
-    <div style="clear:both;"></div>
-    <!-- Menambahkan elemen div untuk membersihkan floating -->
   </section>
 
   <footer>
     <p>&copy; 2024 Cantikka May Aristianti</p>
-    <p>Hak cipta dilindungi undang-undang.</p>
   </footer>
-
-  <script>
-    function showContent(contentId) {
-      var contents = document.getElementsByClassName('content');
-      for (var i = 0; i < contents.length; i++) {
-        contents[i].style.display = 'none';
-      }
-      document.getElementById(contentId).style.display = 'block';
-    }
-  </script>
 </body>
 
 </html>
